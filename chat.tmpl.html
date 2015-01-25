@@ -1,0 +1,17 @@
+<div id="messages">
+<!-- 	<pre>{{ test }}</pre>-->
+	<button ng-click="ctrl.deleteAll()">Delete All Messages</button>	
+	<div class="message" ng-repeat="m in ctrl.messages">
+		<strong>{{ m.userName }}</strong>
+		<em>{{ m.datetime | date }}</em> :
+		<strong>{{ m.message }}</strong>
+		<button ng-click="ctrl.deleteMessage(m)">Delete</button>
+	</div>
+</div>
+<form name="chatForm" ng-submit="ctrl.sendMessage(ctrl.send)" novalidate>
+	<fieldset>
+		<input type="text" required name="userName" ng-model="ctrl.send.userName" id="userName" placeholder="Name">
+		<input type="text" required name="message" ng-model="ctrl.send.message" id="message" placeholder="Message">
+		<input hidden type="submit">
+	</fieldset>
+</form>
